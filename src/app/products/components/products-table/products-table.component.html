@@ -1,0 +1,73 @@
+<dialog #dialog id="dialog" class="ff-poppins">
+  <div class="icon-modal">
+    <span *ngIf="isDelete" class="material-symbols-outlined"> delete </span>
+    <span *ngIf="!isDelete" class="material-symbols-outlined"> edit </span>
+  </div>
+  <div class="message-modal">
+    ¿Esta seguro que desea
+    <span>{{ isDelete ? "Eliminar" : "Editar" }}</span> el producto
+    <span>{{ productGlobal.name }}</span> ?
+  </div>
+  <div class="buttons-actions-modal">
+    <button (click)="dialog.close()">Cancelar</button>
+    <button (click)="delete(); dialog.close()">Confirmar</button>
+  </div>
+</dialog>
+
+<section class="table-container ff-poppins">
+  <table>
+    <thead>
+      <tr>
+        <th>Logo</th>
+        <th>Nombre del producto</th>
+        <th>Descripcion</th>
+        <th>Fecha de liberación</th>
+        <th>Fecha de reestructuración</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of dataSource">
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.date_release | dateFormat }}</td>
+        <td>{{ p.date_revision | dateFormat }}</td>
+        <td>
+          <div class="tooltip">
+            <span class="material-symbols-outlined"> more_vert </span>
+
+            <div class="product-options">
+              <ul>
+                <li (click)="showModal(p, false)">Editar</li>
+                <li (click)="showModal(p, true)">Eliminar</li>
+              </ul>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <p>{{ dataSource.length }} resultados</p>
+    <div class="arrows">
+      <button [disabled]="!canBack">
+        <span class="material-symbols-outlined" disabled>
+          arrow_back
+        </span></button
+      ><button [disabled]="!canContinue">
+        <span class="material-symbols-outlined"> arrow_forward </span>
+      </button>
+    </div>
+    <select
+      name="maxRows"
+      id="maxRows"
+      [(ngModel)]="maxRows"
+      (change)="changeMaxRows()"
+    >
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+</section>

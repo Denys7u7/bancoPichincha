@@ -1,0 +1,13 @@
+<div class="container">
+  <section class="product-actions">
+    <input
+      type="text"
+      name="search"
+      (keydown.enter)="search($event)"
+      id="search"
+      placeholder="Search..."
+    />
+    <button routerLink="create">Agregar</button>
+  </section>
+  <app-products-table></app-products-table>
+</div>

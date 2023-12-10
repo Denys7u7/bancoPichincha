@@ -1,0 +1,147 @@
+<div class="register-form ff-poppins">
+  <section class="register-form-header">
+    <header>
+      <h1>Formulario de registro</h1>
+    </header>
+  </section>
+  <section>
+    <form [formGroup]="form">
+      <div>
+        <label for="id">ID</label
+        ><input formControlName="id" type="text" name="id" id="id" />
+        <p
+          class="input-hint"
+          *ngIf="
+            this.form.get('id')?.hasError('required') &&
+            this.form.get('id')?.touched
+          "
+        >
+          Este campo es requerido
+        </p>
+        <p
+          class="input-hint"
+          *ngIf="
+            (this.form.get('id')?.hasError('minlength') ||
+              this.form.get('id')?.hasError('maxlength')) &&
+            this.form.get('id')?.touched
+          "
+        >
+          El ID requiere entre 3 a 10 caracteres
+        </p>
+      </div>
+      <div>
+        <label for="name">Nombre</label
+        ><input formControlName="name" type="text" name="name" id="name" />
+        <p
+          class="input-hint"
+          *ngIf="
+            form.get('name')?.hasError('required') &&
+            this.form.get('name')?.touched
+          "
+        >
+          Este campo es requerido
+        </p>
+        <p
+          class="input-hint"
+          *ngIf="
+            (this.form.get('name')?.hasError('minlength') ||
+              this.form.get('name')?.hasError('maxlength')) &&
+            this.form.get('name')?.touched
+          "
+        >
+          El Nombre requiere entre 5 a 100 caracteres
+        </p>
+      </div>
+      <div>
+        <label for="description">Descripcion</label
+        ><input
+          formControlName="description"
+          type="text"
+          name="description"
+          id="description"
+        />
+        <p
+          class="input-hint"
+          *ngIf="
+            form.get('description')?.hasError('required') &&
+            this.form.get('description')?.touched
+          "
+        >
+          Este campo es requerido
+        </p>
+        <p
+          class="input-hint"
+          *ngIf="
+            (this.form.get('description')?.hasError('minlength') ||
+              this.form.get('description')?.hasError('maxlength')) &&
+            this.form.get('description')?.touched
+          "
+        >
+          La descripcion requiere entre 10 a 200 caracteres
+        </p>
+      </div>
+      <div>
+        <label for="logo">Logo</label
+        ><input formControlName="logo" type="text" name="logo" id="logo" />
+        <p
+          class="input-hint"
+          *ngIf="
+            form.get('logo')?.hasError('required') &&
+            this.form.get('logo')?.touched
+          "
+        >
+          Este campo es requerido
+        </p>
+      </div>
+      <div>
+        <label for="date_release">Fecha Liberacion</label
+        ><input
+          formControlName="date_release"
+          type="date"
+          name="date_release"
+          id="date_release"
+        />
+        <p
+          class="input-hint"
+          *ngIf="
+            form.get('date_release')?.hasError('required') &&
+            this.form.get('date_release')?.touched
+          "
+        >
+          Este campo es requerido
+        </p>
+        <p
+          class="input-hint"
+          *ngIf="
+            this.form.get('date_release')?.hasError('invalidDate') &&
+            this.form.get('date_release')?.touched
+          "
+        >
+          La fecha debe ser mayor o igual a la fecha actual
+        </p>
+      </div>
+      <div>
+        <label for="date_revision">Fecha Revision</label
+        ><input
+          formControlName="date_revision"
+          type="date"
+          name="date_revision"
+          id="date_revision"
+        />
+        <p
+          class="input-hint"
+          *ngIf="
+            form.get('date_revision')?.hasError('required') &&
+            this.form.get('date_revision')?.touched
+          "
+        >
+          ID no valido
+        </p>
+      </div>
+    </form>
+  </section>
+  <section class="buttons-actions-form">
+    <button (click)="reset()">Reiniciar</button
+    ><button (click)="send()" [disabled]="form.invalid">Enviar</button>
+  </section>
+</div>
