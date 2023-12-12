@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsTableComponent } from './components/products-table/products-table.component';
-import { ProductsComponent } from './components/products/products.component';
+import { ProductsTableComponent } from './UI/products-table/products-table.component';
+import { ProductsComponent } from './UI/products/products.component';
 import { ProductsRoutingModule } from './products-routing.module';
-import { ProductService } from './components/services/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductFormComponent } from './UI/product-form/product-form.component';
+import { ProductRepositoryImpl } from './infraestructure/repositories/product.repository.impl';
+import { ProductApiService } from './infraestructure/driven-adapter/product-api/product-api.service';
+import { ProductRepository } from './domain/models/product/repositories/product.repository';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,9 @@ import { ProductFormComponent } from './components/product-form/product-form.com
     HttpClientModule,
     SharedModule,
   ],
-  providers: [ProductService],
+  providers: [
+    { provide: ProductRepository, useClass: ProductRepositoryImpl },
+    ProductApiService,
+  ],
 })
 export class ProductsModule {}

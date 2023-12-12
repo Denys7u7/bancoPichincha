@@ -1,4 +1,4 @@
-import { ActionProducts } from './actions-products.enum';
+import { ActionProducts } from '../../../utils/actions-products.enum';
 import { throwError } from 'rxjs';
 
 export function handleError(error: Response, action: ActionProducts) {

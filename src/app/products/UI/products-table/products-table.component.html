@@ -1,4 +1,4 @@
-<dialog #dialog id="dialog" class="ff-poppins">
+<dialog #dialogActions id="dialog" class="ff-poppins">
   <div class="icon-modal">
     <span *ngIf="isDelete" class="material-symbols-outlined"> delete </span>
     <span *ngIf="!isDelete" class="material-symbols-outlined"> edit </span>
@@ -9,8 +9,22 @@
     <span>{{ productGlobal.name }}</span> ?
   </div>
   <div class="buttons-actions-modal">
-    <button (click)="dialog.close()">Cancelar</button>
-    <button (click)="delete(); dialog.close()">Confirmar</button>
+    <button (click)="dialogActions.close()">Cancelar</button>
+    <button (click)="isDelete ? delete() : update(); dialogActions.close()">
+      Confirmar
+    </button>
+  </div>
+</dialog>
+
+<dialog #dialogInformation id="information" class="ff-poppins">
+  <div class="icon-modal">
+    <span class="material-symbols-outlined">
+      {{ dialogInformationIcon }}
+    </span>
+  </div>
+  <div class="message-modal">{{ dialogInformationMsg }}</div>
+  <div class="buttons-actions-modal">
+    <button (click)="dialogInformation.close()">OK</button>
   </div>
 </dialog>
 
@@ -26,9 +40,21 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="_productService.isLoading | async">
+      <tr>
+        <td colspan="6">
+          <ngx-skeleton-loader
+            count="10"
+            appearance="line"
+          ></ngx-skeleton-loader>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="!(_productService.isLoading | async)">
       <tr *ngFor="let p of dataSource">
-        <td>{{ p.id }}</td>
+        <td>
+          <img [src]="p.logo" alt="IMAGE_PRODUCT" />
+        </td>
         <td>{{ p.name }}</td>
         <td>{{ p.description }}</td>
         <td>{{ p.date_release | dateFormat }}</td>
@@ -50,15 +76,6 @@
   </table>
   <div class="pagination">
     <p>{{ dataSource.length }} resultados</p>
-    <div class="arrows">
-      <button [disabled]="!canBack">
-        <span class="material-symbols-outlined" disabled>
-          arrow_back
-        </span></button
-      ><button [disabled]="!canContinue">
-        <span class="material-symbols-outlined"> arrow_forward </span>
-      </button>
-    </div>
     <select
       name="maxRows"
       id="maxRows"

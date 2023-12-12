@@ -8,17 +8,28 @@
   src: url("../src/assets/fonts/Poppins/Poppins-Regular.ttf");
 }
 
+$theme: (
+  "blue": #18285b,
+  "yellow": #f9de4b,
+  "gray_ligth": #f4f6f9,
+  "gray_dark": #7c7c80,
+  "black": #000,
+  "white": #fff,
+  "off_white": #eeeeee,
+  "red": #e46464,
+);
+
 * {
   margin: 0;
   padding: 0;
 }
 
 .bg-white {
-  background-color: #fff !important;
+  background-color: map.get($theme, "white") !important;
 }
 
 .bg-gray {
-  background-color: #f4f6f9 !important;
+  background-color: map.get($theme, "gray_ligth") !important;
 }
 
 .ff-roboto {
@@ -27,4 +38,67 @@
 
 .ff-poppins {
   font-family: "Poppins";
+}
+
+dialog {
+  width: 400px;
+  margin: auto;
+  border: none;
+  background-color: map.get($theme, "white");
+  border-radius: 10px;
+  font-size: 0.8rem;
+  text-align: center;
+
+  .icon-modal span {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 25px;
+    color: map.get($theme, "blue");
+    background-color: map.get($theme, "yellow") !important;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 100%;
+  }
+
+  .message-modal,
+  .buttons-actions-modal {
+    padding: 25px;
+    box-sizing: border-box;
+  }
+
+  .message-modal {
+    border-bottom: 1px solid map.get($theme, "off_white");
+    padding: 30px 50px 50px 50px;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .buttons-actions-modal {
+    display: flex;
+    justify-content: space-evenly;
+
+    button {
+      width: 100px;
+      height: 40px;
+      border-radius: 5px;
+      border: none;
+      color: map.get($theme, "blue") !important;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    button:nth-child(1) {
+      background-color: #e9ecf3 !important;
+    }
+
+    button:nth-child(2) {
+      background-color: map.get($theme, "yellow") !important;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+    }
+  }
 }

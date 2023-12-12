@@ -49,6 +49,10 @@ table {
       display: block;
       visibility: visible;
     }
+
+    img {
+      width: 50px;
+    }
   }
 }
 
@@ -82,71 +86,5 @@ div.pagination {
 
   .arrows > button:disabled {
     cursor: default;
-  }
-}
-
-dialog {
-  width: 400px;
-  margin: auto;
-  border: none;
-  background-color: #fff;
-  border-radius: 10px;
-  font-size: 0.8rem;
-
-  .icon-modal {
-    text-align: center;
-  }
-
-  .icon-modal span {
-    font-size: 50px;
-    text-align: center;
-    margin-top: 25px;
-    color: #18285b;
-    background-color: #f9de4b;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 100%;
-  }
-
-  .message-modal,
-  .buttons-actions-modal {
-    padding: 25px;
-    box-sizing: border-box;
-  }
-
-  .message-modal {
-    border-bottom: 1px solid #eeeeee;
-    padding: 30px 50px 50px 50px;
-
-    span {
-      font-weight: 600;
-    }
-  }
-
-  .buttons-actions-modal {
-    display: flex;
-    justify-content: space-evenly;
-
-    button {
-      width: 100px;
-      height: 40px;
-      border-radius: 5px;
-      border: none;
-      color: #18285b;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    button:nth-child(1) {
-      background-color: #e9ecf3;
-    }
-
-    button:nth-child(2) {
-      background-color: #f9de4b;
-    }
-
-    button:disabled {
-      opacity: 0.5;
-    }
   }
 }

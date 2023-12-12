@@ -3,11 +3,11 @@
     <input
       type="text"
       name="search"
-      (keydown.enter)="search($event)"
+      (keyup)="search($event)"
       id="search"
       placeholder="Search..."
     />
-    <button routerLink="create">Agregar</button>
+    <button routerLink="create/false">Agregar</button>
   </section>
   <app-products-table></app-products-table>
 </div>

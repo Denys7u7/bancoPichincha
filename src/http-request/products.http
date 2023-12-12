@@ -9,7 +9,7 @@ Content-Type: application/json
 authorId: 3
 
 {
-    "id": "trj-card 23",
+    "id": "trj-card",
     "name": "Tarjetas de credito",
     "description": "Tarjeta de consumo bajo la modalidad de credito",
     "logo": "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg",
@@ -40,6 +40,6 @@ authorId: 3
 
 ###
 
-GET https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/ipf-msa-productosfinancieros/bp/products/verification?id=trj-card HTTP/1.1
+GET https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/ipf-msa-productosfinancieros/bp/products/verification?id=CREDIT HTTP/1.1
 Content-Type: application/json
 authorId: 3

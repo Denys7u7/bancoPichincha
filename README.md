@@ -1,27 +1,13 @@
 # BancoPichincha
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+Para correr el proyecto debemos correr el comando `ng serve` ó `npm start`, la aplicación se abrira el `http://localhost:4200/`, si por alguna razon tienes en uso el puerto 4200, puedes usar el comando `ng serve --port {puerto}` y deberas de acceder a `http://localhost:{puerto}`.
 
-## Development server
+Para la ejecucion de pruebas unitarias, puedes correr el comando `ng test`. Si deseas obtener el reporte de cobertura, puedes usar el comando `ng test --code-coverage`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+NOTAS:
 
-## Code scaffolding
+- Si por alguna razon quieres recargar los productos sin recargar la pagina, puedes dar `enter` en la caja de busqueda cuando esta se encuentre vacia, esta accion realiza una peticion al endpoint que obtiene los productos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Todas las peticiones tienen un delay de 200ms para poder apreciar el `skeleton`
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Puedes apreciar el reporte de la cobertura de una manera mas detallada, para eso debes ubicarte en la carpeta `coverage/banco-pichincha` y luego acceder al archivo `index.html`. (Luego de correr el comando `ng test --code-coverage`)

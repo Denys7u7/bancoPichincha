@@ -1,7 +1,19 @@
+<dialog #dialogInformation id="information" class="ff-poppins">
+  <div class="icon-modal">
+    <span class="material-symbols-outlined">
+      {{ dialogInformationIcon }}
+    </span>
+  </div>
+  <div class="message-modal">{{ dialogInformationMsg }}</div>
+  <div class="buttons-actions-modal">
+    <button (click)="dialogInformation.close()">OK</button>
+  </div>
+</dialog>
+
 <div class="register-form ff-poppins">
   <section class="register-form-header">
     <header>
-      <h1>Formulario de registro</h1>
+      <h1>Formulario de {{ isEdit ? "Actualizacion" : "Registro" }}</h1>
     </header>
   </section>
   <section>
@@ -27,6 +39,15 @@
           "
         >
           El ID requiere entre 3 a 10 caracteres
+        </p>
+        <p
+          class="input-hint"
+          *ngIf="
+            this.form.get('id')?.hasError('IdAlreadyExists') &&
+            this.form.get('id')?.touched
+          "
+        >
+          El ID debe de ser unico
         </p>
       </div>
       <div>
@@ -142,6 +163,8 @@
   </section>
   <section class="buttons-actions-form">
     <button (click)="reset()">Reiniciar</button
-    ><button (click)="send()" [disabled]="form.invalid">Enviar</button>
+    ><button (click)="send()" [disabled]="form.invalid">
+      {{ isEdit ? "Editar" : "Enviar" }}
+    </button>
   </section>
 </div>

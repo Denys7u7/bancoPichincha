@@ -7,6 +7,7 @@ export const environment = {
   authorId: 3,
   urlProduct:
     'https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/ipf-msa-productosfinancieros/bp/products',
+  DELAY_FOR_SHOW_SKELETON: 200,
 };
 
 /*
